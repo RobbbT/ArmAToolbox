@@ -452,8 +452,6 @@ def loadLOD(context, filePtr, objectName, materialData, layerFlag, lodnr):
     #            mymesh.edges[edge.index].use_edge_sharp = True
     #        elif [v2,v1] in sharpEdges:
     #            mymesh.edges[edge.index].use_edge_sharp = True
-    #        else: 
-    #            print(f"Edge pair {v1},{v2} not found in edges")
 
     # New Code
     if sharpEdges is not None:
@@ -464,11 +462,10 @@ def loadLOD(context, filePtr, objectName, materialData, layerFlag, lodnr):
                 temp = v2
                 v2 = v1
                 v1 = temp
-            try: # Apparently, some models have sharp edges that (no longer) exist.
-                idx = edgeDict[(v1,v2)]
-                mymesh.edges[idx].use_edge_sharp = True
-            except:
-                print(f"WARNING: Edge {v1},{v2} does not exist")
+            idx = edgeDict[(v1,v2)]
+            mymesh.edges[idx].use_edge_sharp = True
+
+
 
     #for pair in sharpEdges:
     #    p1 = pair[0]
